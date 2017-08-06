@@ -1,4 +1,4 @@
-# Hypothesis test, two-sample t
+# Hypothesis test, paired-sample t
 
 I will write the purpose for this repository.
 
