@@ -19,17 +19,33 @@ Is the average of the differences less than zero?
 Is the average of the differences not equal to some hypothesized average?
 Is the average of the differences greater than some hypothesized average?
 Is the average of the differences less than some hypothesized average?
+
+For t tests in general:
+
+The data in a sample follow a normal distribution mean  𝜇  and variance  𝜎2 .
+The sample variance  𝑠2  follows a  𝜒2  distribution with  𝜌  degrees of
+freedom under the null hypothesis, where  𝜌  is a positive constant.
+(𝑌⎯⎯⎯⎯−𝜇)  and the sample standard deviations  𝑠  are independent.
 """
 
 from pathlib import Path
 import time
 
+import matplotlib.pyplot as plt
+import statsmodels.api as sm
+import scipy.stats as stats
 import datasense as ds
 import pandas as pd
+import numpy as np
+
 
 
 def main():
-    pass
+    hypothesized_difference = 4
+    significance_level = 0.05
+    df = pd.read_csv('data_paired_t.csv')
+    df_before_after = df[['before', 'after']]
+    difference_calc = df['after'] - df['before']
 
 
 if __name__ == "__main__":
