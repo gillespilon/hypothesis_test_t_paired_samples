@@ -46,6 +46,15 @@ def main():
     df = pd.read_csv('data_paired_t.csv')
     df_before_after = df[['before', 'after']]
     difference_calc = df['after'] - df['before']
+    scipyresult = stats.ttest_rel(df['before'], df['after'])
+    if scipyresult.pvalue < significance_level:
+        print('Statistically significant. The test statistic =',
+              scipyresult.statistic.round(3),
+              '. The p value = ', scipyresult.pvalue.round(3)), '.'
+    else:
+        print('Not statistically significant. The test statistic =',
+              scipyresult.statistic.round(3),
+              '. The p value = ', scipyresult.pvalue.round(3)), '.'
 
 
 if __name__ == "__main__":
