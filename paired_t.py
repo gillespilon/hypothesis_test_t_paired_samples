@@ -44,8 +44,9 @@ def main():
     filetypes = [("csv and feather files", ".csv .CSV .feather .FEATHER")]
     path_in_title = "Select csv or feather file to read"
     initialdir = Path(__file__).parent.resolve()
-    output_url = "paired_sample_t.html"
     header_title = "Paired-sample t test"
+    # path_in = Path("paired_t_data.csv")
+    output_url = "paired_sample_t.html"
     header_id = "paired-sample-t-test"
     hypothesized_difference = 4
     significance_level = 0.05
@@ -57,7 +58,6 @@ def main():
     #     initialdir=initialdir,
     #     filetypes=filetypes
     # )
-    # df = pd.read_csv('paired_t_data.csv')
     start_time = time.perf_counter()
     original_stdout = ds.html_begin(
         output_url=output_url,
@@ -83,11 +83,44 @@ def main():
         ],
         name="after"
     )
+    # print("Data file", path_in)
+    # print()
+    # df = ds.read_file(file_name=path_in)
+    # series1 = df[df.columns[0]].dropna()
+    # series2 = df[df.columns[1]].dropna()
     results = ds.paired_t(
         series1=series1,
         series2=series2,
-        significance_level=significance_level
+        significance_level=significance_level,
+        width=width,
+        decimals=decimals
     )
+    print("Scenario 1")
+    print("Ho: The population average of the differences equals zero.")
+    print("Ha: The population average of the differences does not equal zero.")
+    print()
+    print("Scenario 2")
+    print("Ho: The population average of the differences equals zero.")
+    print("Ha: The population average of the differences is less than zero.")
+    print()
+    print("Scenario 3")
+    print("Ho: The population average of the differences equals zero.")
+    print(
+        "Ha: The population average of the differences is greater than zero."
+    )
+    print()
+    print("Scenario 4")
+    print("Ho: The population average of the differences equals d.")
+    print("Ha: The population average of the differences does not equal d.")
+    print()
+    print("Scenario 5")
+    print("Ho: The population average of the differences equals d.")
+    print("Ha: The population average of the differences is less than d.")
+    print()
+    print("Scenario 6")
+    print("Ho: The population average of the differences equals d.")
+    print("Ha: The population average of the differences is greater than d.")
+    print()
     # if t_test_pvalue < significance_level:
     #     print('Statistically significant. The test statistic =',
     #           t_test_statisic.round(3),
@@ -96,7 +129,7 @@ def main():
     #     print('Not statistically significant. The test statistic =',
     #           t_test_statisic.round(3),
     #           '. The p value = ', t_test_pvalue.round(3)), '.'
-    print(results)
+    # print(results)
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
