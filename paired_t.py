@@ -88,26 +88,77 @@ def main():
     # df = ds.read_file(file_name=path_in)
     # series1 = df[df.columns[0]].dropna()
     # series2 = df[df.columns[1]].dropna()
-    results = ds.paired_t(
-        series1=series1,
-        series2=series2,
-        significance_level=significance_level,
-        width=width,
-        decimals=decimals
-    )
+    # levels = ["before", "after"]
+    # for level in levels:
+    #     if level == "before":
+    #         series = series1
+    #     else:
+    #         series = series2
+    #     parametric_statistics = ds.parametric_summary(
+    #         series=series,
+    #         decimals=decimals
+    #     ).to_string()
+    #     print(f"Parametric statistics for y level {level}")
+    #     print(parametric_statistics)
+    #     print()
+    # for level in levels:
+    #     if level == "before":
+    #         series = series1
+    #     else:
+    #         series = series2
+    #     nonparametric_statistics = ds.nonparametric_summary(
+    #         series=series,
+    #         alphap=1/3,
+    #         betap=1/3,
+    #         decimals=decimals
+    #     ).to_string()
+    #     print(f"Non-parametric statistics for y level {level}")
+    #     print(nonparametric_statistics)
+    #     print()
     print("Scenario 1")
     print("Ho: The population average of the differences equals zero.")
     print("Ha: The population average of the differences does not equal zero.")
     print()
+    results = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="two-sided",
+        hypothesized_value = None,
+        width=width,
+        decimals=decimals
+    )
+    print(results)
+    print()
     print("Scenario 2")
     print("Ho: The population average of the differences equals zero.")
     print("Ha: The population average of the differences is less than zero.")
+    print()
+    results = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="less",
+        width=width,
+        decimals=decimals
+    )
+    print(results)
     print()
     print("Scenario 3")
     print("Ho: The population average of the differences equals zero.")
     print(
         "Ha: The population average of the differences is greater than zero."
     )
+    print()
+    results = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="greater",
+        width=width,
+        decimals=decimals
+    )
+    print(results)
     print()
     print("Scenario 4")
     print("Ho: The population average of the differences equals d.")
