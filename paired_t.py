@@ -48,7 +48,7 @@ def main():
     # path_in = Path("paired_t_data.csv")
     output_url = "paired_sample_t.html"
     header_id = "paired-sample-t-test"
-    hypothesized_difference = 4
+    hypothesized_value = 4
     significance_level = 0.05
     colour = "#0077bb"
     decimals = 3
@@ -163,6 +163,15 @@ def main():
     print("Ho: The population average of the differences equals d.")
     print("Ha: The population average of the differences does not equal d.")
     print()
+    results = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="two-sided",
+        hypothesized_value=hypothesized_value,
+        width=width,
+        decimals=decimals
+    )
     print("Scenario 5")
     print("Ho: The population average of the differences equals d.")
     print("Ha: The population average of the differences is less than d.")
