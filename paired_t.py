@@ -51,7 +51,7 @@ def main():
     hypothesized_difference = 4
     significance_level = 0.05
     colour = "#0077bb"
-    decimals = 16
+    decimals = 3
     width = 7
     # path_in = ds.ask_open_file_name_path(
     #     title=path_in_title,
@@ -124,7 +124,6 @@ def main():
         series2=series2,
         significance_level=significance_level,
         alternative_hypothesis="two-sided",
-        hypothesized_value = None,
         width=width,
         decimals=decimals
     )
