@@ -119,7 +119,7 @@ def main():
     print("Ho: The population average of the differences equals zero.")
     print("Ha: The population average of the differences does not equal zero.")
     print()
-    results = ds.paired_t(
+    result = ds.paired_t(
         series1=series1,
         series2=series2,
         significance_level=significance_level,
@@ -127,13 +127,13 @@ def main():
         width=width,
         decimals=decimals
     )
-    print(results)
+    print(result)
     print()
     print("Scenario 2")
     print("Ho: The population average of the differences equals zero.")
     print("Ha: The population average of the differences is less than zero.")
     print()
-    results = ds.paired_t(
+    result = ds.paired_t(
         series1=series1,
         series2=series2,
         significance_level=significance_level,
@@ -141,7 +141,7 @@ def main():
         width=width,
         decimals=decimals
     )
-    print(results)
+    print(result)
     print()
     print("Scenario 3")
     print("Ho: The population average of the differences equals zero.")
@@ -149,7 +149,7 @@ def main():
         "Ha: The population average of the differences is greater than zero."
     )
     print()
-    results = ds.paired_t(
+    result = ds.paired_t(
         series1=series1,
         series2=series2,
         significance_level=significance_level,
@@ -157,13 +157,13 @@ def main():
         width=width,
         decimals=decimals
     )
-    print(results)
+    print(result)
     print()
     print("Scenario 4")
     print("Ho: The population average of the differences equals d.")
     print("Ha: The population average of the differences does not equal d.")
     print()
-    results = ds.paired_t(
+    result = ds.paired_t(
         series1=series1,
         series2=series2,
         significance_level=significance_level,
@@ -172,13 +172,37 @@ def main():
         width=width,
         decimals=decimals
     )
+    print(result)
+    print()
     print("Scenario 5")
     print("Ho: The population average of the differences equals d.")
     print("Ha: The population average of the differences is less than d.")
     print()
+    result = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="less",
+        hypothesized_value=hypothesized_value,
+        width=width,
+        decimals=decimals
+    )
+    print(result)
+    print()
     print("Scenario 6")
     print("Ho: The population average of the differences equals d.")
     print("Ha: The population average of the differences is greater than d.")
+    print()
+    result = ds.paired_t(
+        series1=series1,
+        series2=series2,
+        significance_level=significance_level,
+        alternative_hypothesis="greater",
+        hypothesized_value=hypothesized_value,
+        width=width,
+        decimals=decimals
+    )
+    print(result)
     print()
     # if t_test_pvalue < significance_level:
     #     print('Statistically significant. The test statistic =',
@@ -188,7 +212,7 @@ def main():
     #     print('Not statistically significant. The test statistic =',
     #           t_test_statisic.round(3),
     #           '. The p value = ', t_test_pvalue.round(3)), '.'
-    # print(results)
+    # print(result)
     stop_time = time.perf_counter()
     ds.script_summary(
         script_path=Path(__file__),
