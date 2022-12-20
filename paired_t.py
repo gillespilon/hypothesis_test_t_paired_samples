@@ -28,6 +28,9 @@ sigma squared.
 distribution with rho degrees of freedom under the null hypothesis, where rho
 is a positive constant.
 - Ybar - mu and the sample standard deviation s are independent.
+
+Requires datasense
+https://github.com/gillespilon/datasense
 """
 
 from pathlib import Path
